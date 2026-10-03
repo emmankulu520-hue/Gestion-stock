@@ -1,0 +1,14 @@
+def ajouter_client(conn, nom, telephone, email):
+    if not nom.strip():
+        print("Le nom est obligatoire.")
+        return
+
+    conn.execute(
+        """
+        INSERT INTO clients (nom, telephone, email)
+        VALUES (?, ?, ?)
+        """,
+        (nom, telephone, email)
+    )
+    conn.commit()
+    print("Client ajouté avec succès.")
